@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="section-title">Choisissez votre programme</h2>
+    
+    <br><div class="programs-list">
+        <!-- Programme 1 : Prise de Muscle -->
+        <div class="program-card">
+            <img src="/static/images/muscle.jpg" alt="Prise de Muscle">
+            <h3>Prise de Muscle</h3>
+            <p>Un programme personnalisé pour augmenter votre masse musculaire. Suivi 24h/24, adapté à votre rythme et vos objectifs.</p>
+            <p><strong>Prix : 12€ / mois</strong></p>
+            <a href="/prise_de_muscle.html" class="btn-main">Choisir ce programme</a>
+        </div>
+
+        <!-- Programme 2 : Perte de Poids -->
+        <div class="program-card">
+            <img src="/static/images/weight_loss.jpg" alt="Perte de Poids">
+            <h3>Perte de Poids</h3>
+            <p>Un programme spécifique pour perdre du poids de manière saine. Suivi 24h/24, adapté à vos besoins.</p>
+            <p><strong>Prix : 12€ / mois</strong></p>
+            <a href="/perte_de_poids.html" class="btn-main">Choisir ce programme</a>
+        </div>
+
+        <!-- Programme 3 : Endurance -->
+        <div class="program-card">
+            <img src="/static/images/endurance.jpg" alt="Endurance">
+            <h3>Endurance</h3>
+            <p>Améliorez votre endurance physique avec un programme sur-mesure. Suivi 24h/24, ajusté à vos objectifs personnels.</p>
+            <p><strong>Prix : 12€ / mois</strong></p>
+            <a href="/endurance.html" class="btn-main">Choisir ce programme</a>
+        </div>
+    </div>
+
+</section>
+<a href="/" class="btn-back">← Retour à l'accueil</a>
+        <br><br>
+    </div>
+</section>
+   
+</div>
+{% endblock %}

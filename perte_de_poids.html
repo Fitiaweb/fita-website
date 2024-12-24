@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="program-details">
+    <div class="container">
+        <h2 class="program-title">Détails du Programme : Perte de poids</h2>
+        <p class="program-subtitle">Recevez des conseils personnalisés directement sur vos réseaux sociaux !</p>
+
+        <div class="section fade-in">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h3 class="section-title">Un Bot Intelligent à Votre Service</h3>
+                    <p>Grâce à notre <strong>bot intelligent</strong> disponible sur <strong>Facebook</strong> et <strong>Snapchat</strong>, recevez des conseils quotidiens personnalisés selon vos objectifs sportifs et de bien-être.</p>
+                    <p>Posez vos questions et obtenez des réponses en temps réel, pour un accompagnement précis et adapté chaque jour.</p>
+                </div>
+                <div class="image-content">
+                    <img src="{{ url_for('static', filename='images/coach.jpg') }}" alt="Conseils personnalisés" class="section-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h3 class="section-title">Conseils Diététiques Personnalisés</h3>
+                    <p>En plus des conseils sportifs, notre bot vous propose des recommandations diététiques adaptées à vos besoins. Suivez vos habitudes alimentaires et bénéficiez d'un suivi des repas.</p>
+                    <p>Indiquez vos repas du jour, et notre bot calculera les calories consommées, comparées à votre seuil quotidien recommandé.</p>
+                </div>
+                <div class="image-content">
+                    <img src="{{ url_for('static', filename='images/diet.jpg') }}" alt="Conseils diététiques" class="section-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h3 class="section-title">Suivi des Progrès</h3>
+                    <p>Accédez à des <strong>statistiques hebdomadaires</strong> présentées sous forme de graphiques visuels, pour suivre votre évolution de manière motivante et claire.</p>
+                    <p>Suivez vos performances, poids et autres paramètres clés pour rester motivé.</p>
+                </div>
+                <div class="image-content">
+                    <img src="{{ url_for('static', filename='images/progress.jpg') }}" alt="Suivi des progrès" class="section-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="section fade-in">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h3 class="section-title">Mises à Jour Personnalisées</h3>
+                    <p>Chaque semaine, vos <strong>informations personnelles</strong> (poids, performances) sont mises à jour pour ajuster les recommandations du bot et optimiser votre accompagnement.</p>
+                </div>
+                <div class="image-content">
+                    <img src="{{ url_for('static', filename='images/update.jpg') }}" alt="Mises à jour" class="section-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="program-summary slide-in">
+            <ul class="summary-list">
+                <li><strong>Objectif :</strong> Atteignez vos objectifs personnels grâce à des conseils adaptés.</li>
+                <li><strong>Suivi :</strong> Un accompagnement disponible 24h/24 pour garantir votre réussite.</li>
+                <li><strong>Prix :</strong> 12€ par mois, incluant une assistance personnalisée.</li>
+            </ul>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="{{ url_for('formulaire') }}" class="btn-main pulse">Commencer maintenant</a>
+            <a href="{{ url_for('home') }}" class="btn-back">&larr; Retour à l'accueil</a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .program-details {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+        background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+    }
+
+    .program-title {
+        text-align: center;
+        color: #0026fe;
+        margin-bottom: 10px;
+        font-size: 2.5em;
+        animation: slide-down 1s ease;
+    }
+
+    .program-subtitle {
+        text-align: center;
+        font-size: 1.3em;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .text-content {
+        flex: 1;
+        max-width: 60%;
+        text-align: justify;
+    }
+
+    .image-content {
+        flex: 1;
+        max-width: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .section-image:hover {
+        transform: scale(1.05);
+    }
+
+    .program-summary {
+        background: #22b9ff;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: slide-in 0.8s forwards;
+    }
+
+    .summary-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .summary-list li {
+        margin-bottom: 10px;
+    }
+
+    .cta-buttons {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .btn-main {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #00f2fe;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-main:hover {
+        background-color: #00f2fe;
+    }
+
+    .btn-main.pulse {
+        animation: pulse 1.5s infinite;
+    }
+
+    .btn-back {
+        display: inline-block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #003bfe;
+        font-weight: bold;
+    }
+
+    .btn-back:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slide-in {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slide-down {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+</style>
+{% endblock %}

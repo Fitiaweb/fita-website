@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="contact">
+        <div class="container">
+            <!-- Ajout du logo -->
+            <div class="contact-logo">
+                <img src="{{ url_for('static', filename='images/Fit_AI_Logo.jpg') }}" alt="Fit AI Logo">
+            </div>
+
+            <!-- Titre -->
+            <h2>Contactez-Nous</h2>
+            <p>Nous sommes une petite entreprise passionnée par le fitness et le bien-être. Si vous avez des questions ou souhaitez plus d'informations sur nos programmes, n'hésitez pas à nous contacter.</p>
+            
+            <!-- Email -->
+            <p>Vous pouvez nous envoyer un e-mail à : <a href="mailto:contactpro.fitia@gmail.com">contactpro.fitia@gmail.com</a></p>
+
+            <!-- Réseaux sociaux -->
+            <h3>Suivez-Nous sur les Réseaux Sociaux</h3>
+            <p>Nous sommes actifs sur plusieurs plateformes pour vous tenir informé et échanger avec vous :</p>
+            <ul class="social-links">
+                <li><a href="https://www.instagram.com/_repost.tv_" target="_blank">Instagram</a></li>
+                <li><a href="https://www.snapchat.com/add/item974" target="_blank">Snapchat </a></li>
+                <li><a href="https://twitter.com/Temwei" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
+    </section>
+
+</section>
+    <a href="{{ url_for('home') }}" class="btn-back">← Retour à l'accueil</a>
+    <br><br>
+</div>
+</section>
+{% endblock %}
+

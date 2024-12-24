@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'Inscription</title>
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #eef2f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 40px;
+            font-size: 24px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .form-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"],
+        select {
+            width: 85%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .response-summary {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Formulaire d'Inscription</h1>
+    </header>
+
+    <section class="form-section">
+        <form id="formulaire" class="form-container">
+            <!-- Questions à afficher une par une -->
+            <div id="question1" class="question-step">
+                <label for="taille">Quelle est votre taille ? (en cm)</label>
+                <input type="number" id="taille" name="taille" required>
+                <button type="button" class="next-btn">Suivant</button>
+            </div>
+
+            <div id="question2" class="question-step hidden">
+                <label for="poids">Quel est votre poids ? (en kg)</label>
+                <input type="number" id="poids" name="poids" required>
+                <button type="button" class="next-btn">Suivant</button>
+            </div>
+
+            <div id="question3" class="question-step hidden">
+                <label for="sport_par_semaine">Combien de fois par semaine faites-vous du sport ?</label>
+                <input type="number" id="sport_par_semaine" name="frequence_sport" required>
+                <button type="button" class="next-btn">Suivant</button>
+            </div>
+
+            <div id="question4" class="question-step hidden">
+                <label for="nutrition">Qualité de votre nutrition (A à E)</label>
+                <select id="nutrition" name="qualite_nutrition" required>
+                    <option value="A">A - Très bonne</option>
+                    <option value="B">B - Bonne</option>
+                    <option value="C">C - Moyenne</option>
+                    <option value="D">D - Mauvaise</option>
+                    <option value="E">E - Très mauvaise</option>
+                </select>
+                <button type="button" class="next-btn">Suivant</button>
+            </div>
+
+            <!-- Résumé des réponses -->
+            <div id="summary" class="hidden response-summary">
+                <h3>Résumé de vos réponses :</h3>
+                <ul id="summary-list"></ul>
+                <button type="submit">Soumettre</button>
+            </div>
+
+        </form>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const nextBtns = document.querySelectorAll(".next-btn");
+            let currentQuestion = 0;
+
+            // Liste des questions
+            const questions = document.querySelectorAll(".question-step");
+            const summary = document.getElementById("summary");
+            const summaryList = document.getElementById("summary-list");
+
+            // Fonction pour afficher la question suivante
+            function showNextQuestion() {
+                if (currentQuestion < questions.length - 1) {
+                    questions[currentQuestion].classList.add("hidden");
+                    currentQuestion++;
+                    questions[currentQuestion].classList.remove("hidden");
+                }
+
+                // Si c'est la dernière question, afficher le résumé
+                if (currentQuestion === questions.length - 1) {
+                    displaySummary();
+                }
+            }
+
+            // Affichage du résumé
+            function displaySummary() {
+                summaryList.innerHTML = `
+                    <li><strong>Taille :</strong> ${document.getElementById("taille").value} cm</li>
+                    <li><strong>Poids :</strong> ${document.getElementById("poids").value} kg</li>
+                    <li><strong>Sport par semaine :</strong> ${document.getElementById("sport_par_semaine").value} fois</li>
+                    <li><strong>Nutrition :</strong> ${document.getElementById("nutrition").value}</li>
+                `;
+                summary.classList.remove("hidden");
+            }
+
+            // Ajouter les événements pour les boutons "Suivant"
+            nextBtns.forEach((btn) => {
+                btn.addEventListener("click", showNextQuestion);
+            });
+
+            // Soumettre le formulaire
+            document.getElementById("formulaire").addEventListener("submit", async function (event) {
+                event.preventDefault(); // Empêche le rechargement de la page
+
+                // Récupérer les données du formulaire
+                const taille = document.getElementById("taille").value;
+                const poids = document.getElementById("poids").value;
+                const frequenceSport = document.getElementById("sport_par_semaine").value;
+                const qualiteNutrition = document.getElementById("nutrition").value;
+
+                try {
+                    // Envoi des données au serveur
+                    await fetch('http://127.0.0.1:5000/submit_form', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            taille: parseInt(taille),
+                            poids: parseFloat(poids),
+                            frequence_sport: parseInt(frequenceSport),
+                            qualite_nutrition: qualiteNutrition,
+                        }),
+                    });
+
+                    // Redirection vers la page de paiement après soumission
+                    window.location.href = "/paiement.html";
+                } catch (error) {
+                    console.error("Erreur lors de la soumission du formulaire.", error);
+                    // Redirection par défaut même en cas d'erreur
+                    window.location.href = "paiement.html";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

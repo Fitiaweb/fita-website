@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #eef2f7;
+            color: #333;
+        }
+        .politique {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #007bff;
+        }
+        .header-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .title-header h1 {
+            font-size: 1.8rem;
+            color: #444;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .intro {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #444;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .section p {
+            margin: 0;
+            color: #666;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .highlight {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .highlight:hover {
+            text-decoration: underline;
+        }
+        .contact-button, .back-button {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .btn-contact, .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            color: #fff;
+            background: #007bff;
+            margin-top: 10px;
+        }
+        .btn-back {
+            background: #6c757d;
+        }
+        .btn-contact:hover, .btn-back:hover {
+            opacity: 0.9;
+        }
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cookie-banner p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-cookie {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .btn-accept {
+            background: #28a745;
+            color: #fff;
+        }
+        .btn-refuse {
+            background: #dc3545;
+            color: #fff;
+        }
+        .btn-accept:hover, .btn-refuse:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <section class="politique">
+        <header class="header">
+            <div class="header-container">
+                <div class="title-header">
+                    <h1>Politique de Confidentialité</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <p class="intro">
+                Nous respectons votre vie privée. Découvrez ci-dessous comment nous collectons et utilisons vos informations personnelles.
+                Cette page vous informe sur vos droits et la manière dont vos données sont gérées par notre site.
+            </p>
+
+            <div class="section">
+                <h3>Collecte d'informations</h3>
+                <p>
+                    Nous collectons des informations personnelles que vous nous fournissez directement, comme votre nom, email, etc.
+                    Ces informations sont nécessaires pour vous offrir des services personnalisés.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>Utilisation des informations</h3>
+                <p>
+                    Les informations collectées servent à personnaliser votre expérience et à améliorer nos services.
+                    Par exemple, nous pouvons utiliser votre email pour vous envoyer des mises à jour importantes.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>Cookies</h3>
+                <p>
+                    Nous utilisons des cookies pour analyser les visites sur notre site et améliorer votre expérience utilisateur.
+                    Les cookies nous aident à comprendre vos préférences et à vous proposer un contenu adapté.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>Vos droits</h3>
+                <p>
+                    Vous avez le droit d'accéder, de corriger ou de supprimer vos informations personnelles à tout moment.
+                    Si vous avez des questions, n'hésitez pas à <a href="mailto:contactpro.fitia@gmail.com" class="highlight">nous contacter</a>.
+                </p>
+            </div>
+
+            <div class="back-button">
+                <a href="/" class="btn-back">← Retour à l'accueil</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <p>Ce site utilise des cookies pour améliorer votre expérience. Acceptez-vous leur utilisation ?</p>
+        <div class="cookie-buttons">
+            <button class="btn-cookie btn-accept" onclick="handleCookieChoice(true)">Accepter</button>
+            <button class="btn-cookie btn-refuse" onclick="handleCookieChoice(false)">Refuser</button>
+        </div>
+    </div>
+
+    <script>
+        function handleCookieChoice(choice) {
+            const banner = document.getElementById('cookieBanner');
+            banner.style.display = 'none';
+            localStorage.setItem('cookiesAccepted', choice);
+        }
+
+        window.onload = function () {
+            const cookieChoice = localStorage.getItem('cookiesAccepted');
+            if (cookieChoice !== null) {
+                document.getElementById('cookieBanner').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

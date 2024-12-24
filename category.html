@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme Prise de Muscle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h2>GaviotaAI</h2>
+        </div>
+        <div class="navbar">
+            <ul class="nav-links">
+                <li><a href="{{ url_for('home') }}">Accueil</a></li>
+                <li><a href="{{ url_for('programmes') }}">Nos Programmes</a></li>
+                <li><a href="{{ url_for('formulaire') }}">Commencer</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="program-details">
+        <h1>Programme Prise de Muscle</h1>
+        <p>
+            L'intelligence artificielle de <strong>GaviotaAI</strong> vous accompagne tout au long de votre transformation physique. Ce programme est conçu pour s'adapter à votre niveau, qu'il soit débutant, intermédiaire ou professionnel.
+        </p>
+        <p>
+            <strong>Les séances d'entraînement</strong> sont entièrement personnalisées, avec des exercices adaptés à vos objectifs et à votre progression. Chaque session est optimisée pour maximiser vos résultats.
+        </p>
+        <p>
+            En complément, <strong>un suivi diététique</strong> précis est inclus pour garantir un apport nutritionnel équilibré, adapté à vos besoins et à votre dépense énergétique. Des <strong>statistiques détaillées</strong> vous permettront de suivre vos progrès et de maintenir une motivation constante.
+        </p>
+
+        <div class="exercise-images">
+            <h2>Exercices en Image</h2>
+            <div class="images-grid">
+                <img src="{{ url_for('static', filename='images/exercise1.jpg') }}" alt="Exercice 1">
+                <img src="{{ url_for('static', filename='images/exercise2.jpg') }}" alt="Exercice 2">
+                <img src="{{ url_for('static', filename='images/exercise3.jpg') }}" alt="Exercice 3">
+            </div>
+        </div>
+
+        <div class="price-info">
+            <p><strong>Prix :</strong> 17.99 € par mois</p>
+            <a href="{{ url_for('formulaire') }}" class="btn">Commencer maintenant</a>
+        </div>
+    </section>
+</body>
+</html>

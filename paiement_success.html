@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information de l'Utilisateur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Merci pour votre paiement!</h1>
+        <p>Veuillez renseigner vos informations pour finaliser l'inscription.</p>
+
+        <form id="userForm">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="date_naissance">Date de naissance</label>
+            <input type="date" id="date_naissance" name="date_naissance" required>
+
+            <label for="id_reseau">Votre ID (Snap/Facebook)</label>
+            <input type="text" id="id_reseau" name="id_reseau" required>
+
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("userForm").addEventListener("submit", async function (event) {
+    event.preventDefault(); // Empêche le rechargement de la page
+
+    const nom = document.getElementById("nom").value;
+    const prenom = document.getElementById("prenom").value;
+    const email = document.getElementById("email").value;
+    const dateNaissance = document.getElementById("date_naissance").value;
+    const idReseau = document.getElementById("id_reseau").value;
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/save_user_info', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                nom: nom,
+                prenom: prenom,
+                email: email,
+                date_naissance: dateNaissance,
+                id_reseau: idReseau
+            }),
+        });
+
+        const data = await response.json();
+        console.log(data);  // Afficher la réponse pour déboguer
+
+        if (response.ok) {
+            alert("Données enregistrées avec succès!");
+        } else {
+            alert("Erreur lors de l'enregistrement.");
+        }
+    } catch (error) {
+        console.error("Erreur lors de la soumission du formulaire.", error);
+        alert("Erreur lors de l'envoi des données.");
+    }
+});
+
+    </script>
+
+</body>
+</html>

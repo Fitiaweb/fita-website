@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-overlay">
+            <h1>Choisissez Votre Programme</h1>
+            <p>Nous vous proposons des programmes personnalisés pour atteindre vos objectifs fitness. Choisissez celui qui vous convient le mieux !</p>
+            
+            <!-- SECTION DES PROGRAMMES -->
+            <section class="programs">
+                <h2>Nos Programmes</h2>
+                <div class="programs-list">
+                    <!-- Programme 1: Prise de Muscles -->
+                    <div class="program-card">
+                        <img src="/static/images/muscle.jpg" alt="Prise de Muscle">
+                        <h3>Prise de Muscle</h3>
+                        <p>Un programme conçu pour vous aider à prendre de la masse musculaire de manière efficace et rapide.</p>
+                        <a href="/programmes/muscle" class="btn-main">Voir le Programme</a>
+                    </div>
+                    <!-- Programme 2: Perte de Poids -->
+                    <div class="program-card">
+                        <img src="/static/images/weight-loss.jpg" alt="Perte de Poids">
+                        <h3>Perte de Poids</h3>
+                        <p>Un programme adapté pour brûler les graisses et atteindre vos objectifs de perte de poids.</p>
+                        <a href="/programmes/weight-loss" class="btn-main">Voir le Programme</a>
+                    </div>
+                    <!-- Programme 3: Endurance et Forme -->
+                    <div class="program-card">
+                        <img src="/static/images/endurance.jpg" alt="Endurance">
+                        <h3>Endurance et Forme</h3>
+                        <p>Optimisez votre cardio et améliorez votre endurance avec des exercices adaptés à tous les niveaux.</p>
+                        <a href="/programmes/endurance" class="btn-main">Voir le Programme</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+{% endblock %}

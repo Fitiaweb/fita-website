@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de Paiement</title>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AbT10xP1-N9exsca46doB37Aoja9Eu0ggi615s9pxhb60qJXKiXrJETI7-SQP1e6HMo8v4yWvo_TTYtu"></script>
+
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Conteneur principal */
+        .payment-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 40px;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .message.success {
+            color: #4CAF50;
+        }
+
+        .message.error {
+            color: #f44336;
+        }
+
+        /* Nouveau message */
+        .info {
+            font-size: 16px;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .info strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="payment-container">
+        <h1>Paiement avec PayPal</h1>
+        <p>Veuillez procéder au paiement de votre commande :</p>
+        <div class="price">12,00 €</div>
+
+        <!-- Conteneur pour le bouton PayPal -->
+        <div id="paypal-button-container"></div>
+
+        <!-- Nouveau message d'information -->
+        <div class="info">
+            <p><strong>Important :</strong> Après votre paiement, vous devrez ajouter le compte suivant en ami sur Snapchat ou Facebook pour commencer à utiliser votre IA sportive :</p>
+            <p><strong>Compte : item974</strong></p>
+            <p>Une fois ajouté, vous pourrez commencer à utiliser votre IA sportive personnalisée.</p>
+        </div>
+
+        <!-- Messages d'erreur ou de succès -->
+        <div class="message hidden" id="payment-message"></div>
+    </div>
+
+    <script>
+        // Initialisation du bouton PayPal
+        paypal.Buttons({
+            // Création de la commande
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '12.00' // Montant du paiement
+                        }
+                    }]
+                });
+            },
+
+            // Transaction réussie
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    // Afficher un message de succès
+                    document.getElementById('payment-message').textContent = 'Paiement réussi par ' + details.payer.name.given_name + '!';
+                    document.getElementById('payment-message').classList.add('success');
+                    document.getElementById('payment-message').classList.remove('hidden');
+
+                    // Rediriger après le paiement (optionnel)
+                    setTimeout(function () {
+                        window.location.href = "success.html"; // Redirection vers la page de succès
+                    }, 2000); // Attente de 2 secondes avant la redirection
+                });
+            },
+
+            // Gestion des erreurs
+            onError: function (err) {
+                console.error('Erreur pendant la transaction :', err);
+                document.getElementById('payment-message').textContent = 'Une erreur est survenue. Veuillez réessayer.';
+                document.getElementById('payment-message').classList.add('error');
+                document.getElementById('payment-message').classList.remove('hidden');
+            }
+        }).render('#paypal-button-container'); // Affichage du bouton PayPal
+
+    </script>
+
+</body>
+
+</html>

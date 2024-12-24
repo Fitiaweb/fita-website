@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="program-details">
+    <div class="container">
+        
+        <h2>Détails du programme : {{ category_name | capitalize }}</h2>
+        <br>
+        <strong>Recevez des conseils personnalisés directement sur vos réseaux sociaux !</strong>
+        <br><br>
+
+        <div class="section">
+            <p>Grâce à notre <strong>bot intelligent</strong> disponible sur <strong>Facebook</strong> et <strong>Snapchat</strong>, vous recevrez des conseils quotidiens parfaitement adaptés à vos objectifs sportifs et de bien-être.</p>
+            <p>Notre bot répondra également à toutes vos questions en temps réel, vous offrant des recommandations spécifiques et personnalisées pour vous accompagner dans votre progression chaque jour.</p>
+            <img src="{{ url_for('static', filename='images/coach.jpg') }}" alt="Conseils personnalisés" class="section-image">
+        </div>
+
+        <br><br>
+
+        <div class="section">
+            <strong>Conseils diététiques personnalisés</strong>
+            <br><br>
+            <p>En plus des conseils sportifs, notre bot vous propose également des recommandations diététiques adaptées à vos objectifs. Vous pourrez facilement suivre vos habitudes alimentaires grâce à la fonctionnalité de suivi des repas.</p>
+            <p>Si vous le souhaitez, vous pourrez indiquer ce que vous avez mangé pendant la journée, et notre bot calculera automatiquement les calories que vous avez consommées. Il comparera ces calories avec votre seuil quotidien recommandé et vous indiquera si vous êtes en dessous, au niveau, ou au-dessus de ce seuil.</p>
+            <img src="{{ url_for('static', filename='images/diet.jpg') }}" alt="Conseils diététiques" class="section-image">
+        </div>
+
+        <br><br>
+
+        <div class="section">
+            <strong>Suivi de vos progrès et statistiques hebdomadaires</strong>
+            <br><br>
+            <p>Chaque semaine, vous aurez accès à des <strong>statistiques détaillées</strong> sous forme de graphiques visuels, vous permettant de suivre vos progrès de manière claire et motivante.</p>
+            <p>Que ce soit votre poids, vos performances physiques, ou d'autres paramètres, vous aurez un aperçu de votre évolution continue.</p>
+            <img src="{{ url_for('static', filename='images/progress.jpg') }}" alt="Suivi des progrès" class="section-image">
+        </div>
+
+        <br><br>
+
+        <div class="section">
+            <strong>Mise à jour régulière de vos informations</strong>
+            <br><br>
+            <p>Une mise à jour hebdomadaire de vos <strong>informations personnelles</strong> sera effectuée. Nous suivrons de près votre poids et vos performances sur les exercices réalisés, ce qui permettra au bot d’adapter ses conseils à vos besoins spécifiques.</p>
+            <p>Ces mises à jour régulières garantissent un <strong>accompagnement personnalisé</strong> et optimal tout au long de votre parcours.</p>
+            <img src="{{ url_for('static', filename='images/update.jpg') }}" alt="Mise à jour" class="section-image">
+        </div>
+
+        <br><br>
+
+        <ul>
+            <br>
+            <li><strong>Objectif :</strong> Atteindre vos objectifs personnels grâce à des conseils adaptés et ciblés.</li>
+            <br>
+            <li><strong>Suivi :</strong> Un accompagnement disponible 24h/24 pour garantir votre réussite.</li>
+            <br>
+            <li><strong>Prix :</strong> 17.99€ par mois, incluant une assistance personnalisée à tout moment.</li>
+            <br>
+        </ul>
+        <br><br><br>
+        
+        <a href="{{ url_for('formulaire') }}" class="btn-main">Commencer maintenant</a>
+        <br><br>
+    </div>
+</section>
+
+{% endblock %}
